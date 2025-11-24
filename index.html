@@ -53,25 +53,16 @@
         }
 
         .logo-container {
+            /* No desktop, este é apenas o contêiner da logo OPILL, alinhado à esquerda */
             display: flex;
             align-items: center;
             gap: 15px;
         }
         
-        /* Estilo para o Título Rocket Anúncios */
-        .rocket-title {
-            font-size: 24px;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .rocket-title span:first-child {
-            color: #FF4500; /* Rocket Orange */
-        }
+        /* O estilo rocket-title foi removido */
 
         .client-logo-circle {
-            width: 70px; /* Ajuste para melhor proporção */
+            width: 70px; 
             height: 70px;
             border-radius: 50%;
             background: white;
@@ -91,16 +82,18 @@
         }
 
         .period {
+            /* No desktop, alinha o título e as datas à direita */
             text-align: right;
             display: flex;
-            align-items: center;
-            gap: 15px;
+            align-items: flex-end; /* Alinha o h2 ao 30 DIAS/Data */
+            flex-direction: column;
+            gap: 5px;
         }
 
         .period h2 {
             font-size: 32px;
             font-weight: 800;
-            color: white;
+            color: #00C2B9; /* Cor teal/cian */
             line-height: 1.1;
         }
 
@@ -108,6 +101,19 @@
             font-size: 16px;
             color: #AAAAAA; /* Cinza claro */
             margin-top: 5px;
+        }
+        
+        .period-date-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .period-date-info .days {
+            color: white; /* 30 DIAS em branco */
+            font-size: 24px;
+            font-weight: 800;
+            line-height: 1;
         }
 
         .metrics-grid {
@@ -125,20 +131,20 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            color: white; /* Alterado para branco para alto contraste */
+            color: white; 
         }
 
         .metric-value {
             font-size: 40px;
             font-weight: 800;
-            color: #1a1a1a; /* Cor escura do fundo para alto contraste */
+            color: #1a1a1a; 
             margin: 10px 0;
             line-height: 1;
         }
 
         .metric-label {
             font-size: 13px;
-            color: #1a1a1a; /* Cor escura do fundo para alto contraste */
+            color: #1a1a1a; 
             font-weight: 600;
             text-transform: uppercase;
         }
@@ -147,7 +153,7 @@
             text-align: center;
             font-size: 18px;
             font-weight: 700;
-            color: #1e1e1e; /* Cor escura para contrastar com o fundo teal */
+            color: #1e1e1e; 
             background: #00C2B9;
             padding: 10px 20px;
             border-radius: 8px;
@@ -254,32 +260,40 @@
             color: #00C2B9;
         }
         
-        /* --- OTIMIZAÇÃO PARA CELULAR --- */
+        /* --- OTIMIZAÇÃO PARA CELULAR (Centralização total) --- */
         @media (max-width: 768px) {
             .header {
+                /* Garante empilhamento e centralização */
                 flex-direction: column;
+                align-items: center; 
                 text-align: center;
                 gap: 20px;
                 padding-bottom: 10px;
             }
             .header::before {
-                width: 120px; /* Pílula menor no mobile */
+                width: 120px; 
                 height: 25px;
                 border-bottom-left-radius: 12px;
                 border-bottom-right-radius: 12px;
             }
 
             .logo-container {
-                flex-direction: column;
-                gap: 15px;
+                /* Centraliza a logo OPILL na horizontal */
+                justify-content: center; 
                 width: 100%;
-                order: 2;
+                order: 2; /* Coloca a logo OPILL abaixo do título em mobile */
             }
             .period {
-                flex-direction: column-reverse;
+                /* Centraliza o texto e os blocos de data */
+                flex-direction: column; /* Faz o título e a info de data se empilharem */
+                align-items: center; /* Centraliza verticalmente (no eixo flex) */
                 text-align: center;
-                order: 1;
+                order: 1; /* Coloca o título principal acima da logo OPILL em mobile */
                 gap: 5px;
+            }
+            .period-date-info {
+                /* Centraliza 30 DIAS / DATA */
+                justify-content: center !important; 
             }
             .period h2 {
                 font-size: 24px;
@@ -309,30 +323,22 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <!-- Rocket Anúncios Logo & OPILL Logo -->
+            <!-- Logo OPILL (mantida no logo-container, sem o branding Rocket) -->
             <div class="logo-container">
-                <!-- ROCKET ANÚNCIOS BRANDING -->
-                <div class="rocket-title">
-                    <svg viewBox="0 0 24 24" style="width: 30px; height: 30px; fill: #FF4500; transform: rotate(45deg);">
-                        <path d="M12 2L10 6L4 8L6 14L2 16L12 22L22 16L18 14L20 8L14 6L12 2Z" fill="currentColor"/>
-                    </svg>
-                    <span>ROCKET</span> ANÚNCIOS
-                </div>
-
                 <!-- CLIENT LOGO CIRCLE (OPILL) -->
                 <div class="client-logo-circle">
                     <img src="https://i.imgur.com/HDQy6pe.jpeg" alt="Logo do Cliente OPILL" class="client-logo-image">
                 </div>
             </div>
 
-            <!-- 30 DIAS + DATA + RESULTADOS TÍTULO -->
+            <!-- TÍTULO PRINCIPAL + 30 DIAS + DATA -->
             <div class="period">
                 <!-- Título PRINCIPAL -->
                 <h2>RESULTADOS DOS ANÚNCIOS</h2>
                 
-                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 10px;">
+                <div class="period-date-info">
                     <!-- 30 DIAS -->
-                    <p style="color: white; font-size: 24px; font-weight: 800; line-height: 1;">30 DIAS</p>
+                    <p class="days">30 DIAS</p>
                     <!-- DATA -->
                     <p class="date">23/10 A 23/11</p>
                 </div>
@@ -342,24 +348,29 @@
         <!-- Metrics Grid -->
         <div class="metrics-grid">
             <div class="metric-card">
-                <div class="metric-value">1.854</div>
+                <!-- VALOR ATUALIZADO: 5.628 -->
+                <div class="metric-value">5.628</div>
                 <div class="metric-label">CLIQUES NOS ANÚNCIOS</div>
             </div>
             <div class="metric-card">
-                <div class="metric-value">20.748</div>
+                <!-- VALOR ATUALIZADO: 46.452 -->
+                <div class="metric-value">46.452</div>
                 <div class="metric-label">PESSOAS ALCANÇADAS</div>
             </div>
             <div class="metric-card">
-                <div class="metric-value">82.250</div>
+                <!-- VALOR ATUALIZADO: 189.312 -->
+                <div class="metric-value">189.312</div>
                 <div class="metric-label">IMPRESSÕES</div>
             </div>
             <div class="metric-card">
-                <div class="metric-value">66</div>
+                <!-- VALOR ATUALIZADO: 85 -->
+                <div class="metric-value">85</div>
                 <div class="metric-label">COMPRAS NO SITE</div>
             </div>
             <!-- Conversas no WhatsApp como um card separado (Ajustado a grade para mobile) -->
              <div class="metric-card">
-                <div class="metric-value">315</div>
+                <!-- VALOR ATUALIZADO: 261 -->
+                <div class="metric-value">261</div>
                 <div class="metric-label">CONVERSAS NO WHATSAPP</div>
             </div>
         </div>
@@ -372,18 +383,20 @@
             <div class="step">
                 <div class="step-icon">🏠</div>
                 <div class="step-title">Visualização</div>
-                <div class="step-description">Como se 20.748 pessoas passassem em frente à sua loja</div>
+                <!-- TEXTO ATUALIZADO -->
+                <div class="step-description">Como se 46.452 pessoas passassem em frente à sua loja</div>
             </div>
             <div class="step">
-                <div class="step-icon">👀</div> <!-- Ícone Olhos mais adequado que vestido (👗) -->
+                <div class="step-icon">👀</div> 
                 <div class="step-title">Interesse</div>
-                <div class="step-description">1.854 pessoas pararam para olhar sua vitrine</div>
+                <!-- TEXTO ATUALIZADO -->
+                <div class="step-description">5.628 pessoas pararam para olhar sua vitrine</div>
             </div>
             <div class="step">
-                <div class="step-icon">🛒</div> <!-- Ícone Carrinho mais adequado que balão de chat (💬) -->
+                <div class="step-icon">🛒</div> 
                 <div class="step-title">Compras</div>
-                <!-- 66 + 315 = 381 -->
-                <div class="step-description">381 pessoas entraram e pegaram informações ou compraram.</div>
+                <!-- 85 + 261 = 346 -->
+                <div class="step-description">346 pessoas entraram e pegaram informações ou compraram.</div>
             </div>
         </div>
 
@@ -399,8 +412,8 @@
         <!-- Footer -->
         <div class="footer">
             <div class="total-invested">Total investido</div>
-            <!-- VALOR CORRIGIDO -->
-            <div style="font-size: 28px; color: #00C2B9; font-weight: 800;">R$ 1.445,89</div>
+            <!-- VALOR ATUALIZADO: R$ 2.532,46 -->
+            <div style="font-size: 28px; color: #00C2B9; font-weight: 800;">R$ 2.532,46</div>
             <div class="contact-info">
                 <span>Neto (85) 9 8150-8799</span>
                 <span>@RocketAnuncios</span>
