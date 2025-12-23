@@ -9,20 +9,30 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif; /* Usando Inter para consistência */
+            font-family: 'Inter', sans-serif;
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
         body {
-            background: #1e1e1e; /* Cor escura do fundo */
+            background: #1e1e1e;
             color: white;
             line-height: 1.6;
         }
 
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
         .container {
             max-width: 1000px;
-            margin: 0px auto; /* Removido margin-top/bottom para melhor ajuste */
+            margin: 0px auto;
             padding: 20px;
         }
 
@@ -32,12 +42,11 @@
             align-items: center;
             margin-bottom: 30px;
             padding-bottom: 20px;
-            border-bottom: 2px solid #00C2B9; /* Cor teal/cian */
+            border-bottom: 2px solid #00C2B9;
             position: relative;
-            padding-top: 30px; /* Espaço para a pílula */
+            padding-top: 30px;
         }
 
-        /* Adicionando a Pílula Laranja */
         .header::before {
             content: '';
             background: #FFB000;
@@ -53,13 +62,10 @@
         }
 
         .logo-container {
-            /* No desktop, este é apenas o contêiner da logo OPILL, alinhado à esquerda */
             display: flex;
             align-items: center;
             gap: 15px;
         }
-        
-        /* O estilo rocket-title foi removido */
 
         .client-logo-circle {
             width: 70px; 
@@ -82,10 +88,9 @@
         }
 
         .period {
-            /* No desktop, alinha o título e as datas à direita */
             text-align: right;
             display: flex;
-            align-items: flex-end; /* Alinha o h2 ao 30 DIAS/Data */
+            align-items: flex-end;
             flex-direction: column;
             gap: 5px;
         }
@@ -93,13 +98,13 @@
         .period h2 {
             font-size: 32px;
             font-weight: 800;
-            color: #00C2B9; /* Cor teal/cian */
+            color: #00C2B9;
             line-height: 1.1;
         }
 
         .period .date {
             font-size: 16px;
-            color: #AAAAAA; /* Cinza claro */
+            color: #AAAAAA;
             margin-top: 5px;
         }
         
@@ -110,7 +115,7 @@
         }
         
         .period-date-info .days {
-            color: white; /* 30 DIAS em branco */
+            color: white;
             font-size: 24px;
             font-weight: 800;
             line-height: 1;
@@ -124,7 +129,7 @@
         }
 
         .metric-card {
-            background: #00C2B9; /* Cor teal/cian */
+            background: #00C2B9;
             border-radius: 12px;
             padding: 20px;
             text-align: center;
@@ -184,7 +189,7 @@
         .step-icon {
             width: 50px;
             height: 50px;
-            background: #FF4500; /* Laranja/Rocket Orange */
+            background: #FF4500;
             border-radius: 50%;
             margin: 0 auto 15px;
             display: flex;
@@ -197,7 +202,7 @@
         .step-title {
             font-size: 16px;
             font-weight: 700;
-            color: #FF4500; /* Laranja/Rocket Orange */
+            color: #FF4500;
             margin-bottom: 10px;
         }
 
@@ -224,14 +229,22 @@
 
         .technical-image {
             width: 100%;
+            max-width: 100%;
+            height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            min-width: 600px; /* Garante que a imagem não encolha demais */
         }
+        
         .technical-data-wrapper {
-            overflow-x: auto; /* Permite rolagem horizontal em telas pequenas */
+            overflow-x: auto;
             background: white;
             border-radius: 8px;
+        }
+
+        @media (min-width: 769px) {
+            .technical-image {
+                max-width: 600px;
+            }
         }
 
         .footer {
@@ -260,16 +273,15 @@
             color: #00C2B9;
         }
         
-        /* --- OTIMIZAÇÃO PARA CELULAR (Centralização total) --- */
         @media (max-width: 768px) {
             .header {
-                /* Garante empilhamento e centralização */
                 flex-direction: column;
                 align-items: center; 
                 text-align: center;
                 gap: 20px;
                 padding-bottom: 10px;
             }
+            
             .header::before {
                 width: 120px; 
                 height: 25px;
@@ -278,27 +290,28 @@
             }
 
             .logo-container {
-                /* Centraliza a logo OPILL na horizontal */
                 justify-content: center; 
                 width: 100%;
-                order: 2; /* Coloca a logo OPILL abaixo do título em mobile */
+                order: 2;
             }
+            
             .period {
-                /* Centraliza o texto e os blocos de data */
-                flex-direction: column; /* Faz o título e a info de data se empilharem */
-                align-items: center; /* Centraliza verticalmente (no eixo flex) */
+                flex-direction: column;
+                align-items: center;
                 text-align: center;
-                order: 1; /* Coloca o título principal acima da logo OPILL em mobile */
+                order: 1;
                 gap: 5px;
             }
+            
             .period-date-info {
-                /* Centraliza 30 DIAS / DATA */
-                justify-content: center !important; 
+                justify-content: center;
             }
+            
             .period h2 {
                 font-size: 24px;
                 line-height: 1.2;
             }
+            
             .client-logo-circle {
                 margin: 0 auto;
             }
@@ -323,24 +336,18 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <!-- Logo OPILL (mantida no logo-container, sem o branding Rocket) -->
             <div class="logo-container">
-                <!-- CLIENT LOGO CIRCLE (OPILL) -->
                 <div class="client-logo-circle">
                     <img src="https://i.imgur.com/HDQy6pe.jpeg" alt="Logo do Cliente OPILL" class="client-logo-image">
                 </div>
             </div>
 
-            <!-- TÍTULO PRINCIPAL + 30 DIAS + DATA -->
             <div class="period">
-                <!-- Título PRINCIPAL -->
                 <h2>RESULTADOS DOS ANÚNCIOS</h2>
                 
                 <div class="period-date-info">
-                    <!-- 30 DIAS -->
                     <p class="days">30 DIAS</p>
-                    <!-- DATA -->
-                    <p class="date">23/10 A 23/11</p>
+                    <p class="date">23/11 A 22/12</p>
                 </div>
             </div>
         </div>
@@ -348,29 +355,23 @@
         <!-- Metrics Grid -->
         <div class="metrics-grid">
             <div class="metric-card">
-                <!-- VALOR ATUALIZADO: 5.628 -->
-                <div class="metric-value">5.628</div>
+                <div class="metric-value">10.569</div>
                 <div class="metric-label">CLIQUES NOS ANÚNCIOS</div>
             </div>
             <div class="metric-card">
-                <!-- VALOR ATUALIZADO: 46.452 -->
-                <div class="metric-value">46.452</div>
+                <div class="metric-value">230.544</div>
                 <div class="metric-label">PESSOAS ALCANÇADAS</div>
             </div>
             <div class="metric-card">
-                <!-- VALOR ATUALIZADO: 189.312 -->
-                <div class="metric-value">189.312</div>
+                <div class="metric-value">429.045</div>
                 <div class="metric-label">IMPRESSÕES</div>
             </div>
             <div class="metric-card">
-                <!-- VALOR ATUALIZADO: 85 -->
-                <div class="metric-value">85</div>
+                <div class="metric-value">167</div>
                 <div class="metric-label">COMPRAS NO SITE</div>
             </div>
-            <!-- Conversas no WhatsApp como um card separado (Ajustado a grade para mobile) -->
-             <div class="metric-card">
-                <!-- VALOR ATUALIZADO: 261 -->
-                <div class="metric-value">261</div>
+            <div class="metric-card">
+                <div class="metric-value">429</div>
                 <div class="metric-label">CONVERSAS NO WHATSAPP</div>
             </div>
         </div>
@@ -383,37 +384,32 @@
             <div class="step">
                 <div class="step-icon">🏠</div>
                 <div class="step-title">Visualização</div>
-                <!-- TEXTO ATUALIZADO -->
-                <div class="step-description">Como se 46.452 pessoas passassem em frente à sua loja</div>
+                <div class="step-description">Como se 230.544 pessoas passassem em frente à sua loja</div>
             </div>
             <div class="step">
                 <div class="step-icon">👀</div> 
                 <div class="step-title">Interesse</div>
-                <!-- TEXTO ATUALIZADO -->
-                <div class="step-description">5.628 pessoas pararam para olhar sua vitrine</div>
+                <div class="step-description">10.569 pessoas pararam para olhar sua vitrine</div>
             </div>
             <div class="step">
                 <div class="step-icon">🛒</div> 
                 <div class="step-title">Compras</div>
-                <!-- 85 + 261 = 346 -->
-                <div class="step-description">346 pessoas entraram e pegaram informações ou compraram.</div>
+                <div class="step-description">596 pessoas entraram e pegaram informações ou compraram.</div>
             </div>
         </div>
 
         <!-- Technical Data -->
         <div class="technical-section">
             <div class="technical-title">DADOS TÉCNICOS</div>
-            <!-- Wrapper para rolagem horizontal -->
             <div class="technical-data-wrapper">
-                <img src="https://i.imgur.com/qnHhbxd.png" alt="Dados Técnicos" class="technical-image">
+                <img src="https://i.imgur.com/nnL3LkP.png" alt="Dados Técnicos" class="technical-image">
             </div>
         </div>
 
         <!-- Footer -->
         <div class="footer">
             <div class="total-invested">Total investido</div>
-            <!-- VALOR ATUALIZADO: R$ 2.532,46 -->
-            <div style="font-size: 28px; color: #00C2B9; font-weight: 800;">R$ 2.532,46</div>
+            <div style="font-size: 28px; color: #00C2B9; font-weight: 800;">R$ 3.567,54</div>
             <div class="contact-info">
                 <span>Neto (85) 9 8150-8799</span>
                 <span>@RocketAnuncios</span>
